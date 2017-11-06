@@ -6,8 +6,8 @@ const paypal = require('paypal-rest-sdk');
 //add client secret and id
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
-  'client_id': 'AeaaADuOJ04mXDHXeMjOIPa7YaiyK30tECJAgXqAZjg0P00B3IbpW1GXBou1CZOJQYr8ukXCCRYDL8ok',
-  'client_secret': 'EIswwhJs9DIUfQBYPjvjXLuysu8UfgDsj_3JSNiIWzHjjoHMxx6689I4YicnVjT3P6HkuyknU4pxlM67'
+  'client_id': 'AT9SQSDlMbEiIU8mAyQTdn0UQrPGmmsIqF947pEDoPI_A36Gq14k1sdaODvxNaQREIrG5Mk_aFWcytoO',
+  'client_secret': 'ENAHA4aJkXzjyBj82FPCCW3bQmZn2Im8-KhRxqyJmTLgOlH98K7Jo1-m9t36rmddu0S-gQ9wtG33waSU'
 });
 
 const app = express();
@@ -95,7 +95,7 @@ app.get('/success', (req, res) => {
       console.log(error.response);
       throw error;
     } else {
-      console.log("Get Payment Response");
+      //console.log("Get Payment Response");
       console.log(JSON.stringify(payment)); // log payment object -
       res.send('Success');
     }
