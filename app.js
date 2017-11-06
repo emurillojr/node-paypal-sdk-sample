@@ -71,4 +71,39 @@ app.post('/pay', (req, res) => {
 
 });
 
+// create route for success
+app.get('/success', (req, res) => {
+  // get params
+  const payerId = req.query.PayerID;
+  const paymentId = req.query.paymentId;
+
+  // create execute object
+  const execute_payment_json = {
+    "payer_id": payerId,
+    "transactions": [
+      {
+        "amount": {
+          "currency": "USD",
+          "total": "25.00"
+        }
+      }
+    ]
+  };
+
+  paypal.payment.execute(paymentId, execute_payment_json, function(error, payment) {
+    if (error) {
+      console.log(error.response);
+      throw error;
+    } else {
+      console.log("Get Payment Response");
+      console.log(JSON.stringify(payment)); // log payment object -
+      res.send('Success');
+    }
+  });
+
+});
+
+// cancel route
+app.get('/cancel', (req, res) => res.send('Cancelled'));
+
 app.listen(3000, () => console.log('Server Started'));
